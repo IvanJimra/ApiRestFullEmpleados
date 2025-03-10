@@ -90,29 +90,44 @@ El proyecto sigue la estructura MVC (Modelo-Vista-Controlador) y está organizad
 
 ### Datos de ejemplo
 
+#### Registros de Generos
+
     ```sql
     -- Géneros
     INSERT INTO GENDERS (ID, NAME) VALUES (1, 'Masculino');
     INSERT INTO GENDERS (ID, NAME) VALUES (2, 'Femenino');
     INSERT INTO GENDERS (ID, NAME) VALUES (3, 'No Binario');
     COMMIT;
+    ```
+#### Registros de Puesto de trabajo 
 
+    ```sql
     -- Puestos de trabajo
     INSERT INTO JOBS (ID, NAME, SALARY) VALUES (1, 'Desarrollador', 25000.00);
     INSERT INTO JOBS (ID, NAME, SALARY) VALUES (2, 'Gerente', 40000.00);
     INSERT INTO JOBS (ID, NAME, SALARY) VALUES (3, 'Diseñador', 20000.00);
     INSERT INTO JOBS (ID, NAME, SALARY) VALUES (4, 'Analista', 30000.00);
     COMMIT;
+    ```
 
+#### Registro de Empleados
+
+    ```sql
     -- Empleados
     INSERT INTO EMPLOYEES (ID, GENDER_ID, JOB_ID, NAME, LAST_NAME, BIRTHDATE)
     VALUES (1, 1, 1, 'Juan', 'Pérez', TO_DATE('1990-05-15', 'YYYY-MM-DD'));
     COMMIT;
-
+    
     INSERT INTO EMPLOYEES (ID, GENDER_ID, JOB_ID, NAME, LAST_NAME, BIRTHDATE)
     VALUES (2, 2, 2, 'María', 'Gómez', TO_DATE('1985-10-22', 'YYYY-MM-DD'));
     COMMIT;
 
+    ```
+
+
+#### Registro de horas trabajadas
+
+    ```sql
     -- Horas trabajadas
     INSERT INTO EMPLOYEE_WORKED_HOURS (ID, EMPLOYEE_ID, WORKED_HOURS, WORKED_DATE)
     VALUES (1, 1, 8, TO_DATE('2023-10-01', 'YYYY-MM-DD'));
@@ -137,11 +152,11 @@ Sigue estos pasos para configurar y ejecutar el proyecto en tu máquina local.
 
 1- Clona el repositorio:
 
-    ``` bash    
+ ```bash    
 
     git clone https://github.com/IvanJimra/ApiRestFullE.git
 
-    ```
+ ```
 
 
 2- Configura la base de datos:
@@ -152,7 +167,7 @@ Ejecuta el script SQL proporcionado en la sección Estructura de la base de dato
 
 Asegúrate de que el archivo `src/main/resources/application.properties` tenga la configuración correcta para conectarse a tu base de datos. Por ejemplo:
 
-    ``` bash
+ ```bash
     spring.datasource.url=jdbc:oracle:thin:@localhost:1521:xe
     spring.datasource.username=System
     spring.datasource.password=123456
@@ -163,7 +178,7 @@ Asegúrate de que el archivo `src/main/resources/application.properties` tenga l
     logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
     spring.jackson.time-zone=America/Mexico_City
     Compila y ejecuta el proyecto:
-    ```
+```
 
 4- Abre Postman y prueba los endpoints.
 
@@ -173,51 +188,51 @@ Asegúrate de que el archivo `src/main/resources/application.properties` tenga l
 
 #### Employees
 
-- **Listar empleados**: GET http://localhost:9000/api/EmployeesWs/listar
+- **Listar empleados**: GET `http://localhost:9000/api/EmployeesWs/listar`
 
-- **Buscar empleado por ID**: POST http://localhost:9000/api/EmployeesWs/buscar
+- **Buscar empleado por ID**: POST `http://localhost:9000/api/EmployeesWs/buscar`
 
-- **Guardar empleado**: POST http://localhost:9000/api/EmployeesWs/guardar
+- **Guardar empleado**: POST `http://localhost:9000/api/EmployeesWs/guardar`
 
-- **Editar empleado**: POST http://localhost:9000/api/EmployeesWs/editar
+- **Editar empleado**: POST `http://localhost:9000/api/EmployeesWs/editar`
 
-- **Eliminar empleado**: POST http://localhost:9000/api/EmployeesWs/eliminar
+- **Eliminar empleado**: POST `http://localhost:9000/api/EmployeesWs/eliminar`
 
 #### Genders
 
-- **Listar géneros**: GET http://localhost:9000/api/GendersWs/listar
+- **Listar géneros**: GET `http://localhost:9000/api/GendersWs/listar`
 
-- **Buscar género por ID**: POST http://localhost:9000/api/GendersWs/buscar
+- **Buscar género por ID**: POST `http://localhost:9000/api/GendersWs/buscar`
 
-- **Guardar género**: POST http://localhost:9000/api/GendersWs/guardar
+- **Guardar género**: POST `http://localhost:9000/api/GendersWs/guardar`
 
-- **Editar género**: POST http://localhost:9000/api/GendersWs/editar
+- **Editar género**: POST `http://localhost:9000/api/GendersWs/editar`
 
-- **Eliminar género**: POST http://localhost:9000/api/GendersWs/eliminar
+- **Eliminar género**: POST `http://localhost:9000/api/GendersWs/eliminar`
 
 #### Jobs
 
-- **Listar puestos de trabajo**: GET http://localhost:9000/api/JobsWs/listar
+- **Listar puestos de trabajo**: GET `http://localhost:9000/api/JobsWs/listar`
 
-- **Buscar puesto por ID**: POST http://localhost:9000/api/JobsWs/buscar
+- **Buscar puesto por ID**: POST `http://localhost:9000/api/JobsWs/buscar`
 
-- **Guardar puesto**: POST http://localhost:9000/api/JobsWs/guardar
+- **Guardar puesto**: POST `http://localhost:9000/api/JobsWs/guardar`
 
-- **Editar puesto**: POST http://localhost:9000/api/JobsWs/editar
+- **Editar puesto**: POST `http://localhost:9000/api/JobsWs/editar`
 
-- **Eliminar puesto**: POST http://localhost:9000/api/JobsWs/eliminar
+- **Eliminar puesto**: POST `http://localhost:9000/api/JobsWs/eliminar`
 
 #### EmployeeWorkedHours
 
-- **Listar horas trabajadas**: GET http://localhost:9000/api/EmployeeWorkedHoursWs/listar
+- **Listar horas trabajadas**: GET `http://localhost:9000/api/EmployeeWorkedHoursWs/listar`
 
-- **Buscar horas trabajadas por ID**: POST http://localhost:9000/api/EmployeeWorkedHoursWs/buscar
+- **Buscar horas trabajadas por ID**: POST `http://localhost:9000/api/EmployeeWorkedHoursWs/buscar`
 
-- **Guardar horas trabajadas**: POST http://localhost:9000/api/EmployeeWorkedHoursWs/guardar
+- **Guardar horas trabajadas**: POST `http://localhost:9000/api/EmployeeWorkedHoursWs/guardar`
 
-- **Editar horas trabajadas**: POST http://localhost:9000/api/EmployeeWorkedHoursWs/editar
+- **Editar horas trabajadas**: POST `http://localhost:9000/api/EmployeeWorkedHoursWs/editar`
 
-- **Eliminar horas trabajadas**: POST http://localhost:9000/api/EmployeeWorkedHoursWs/eliminar
+- **Eliminar horas trabajadas**: POST `http://localhost:9000/api/EmployeeWorkedHoursWs/eliminar`
 
 ## 🤝 Contribución
 
